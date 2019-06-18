@@ -1,8 +1,8 @@
 <?php // @codingStandardsIgnoreLine
 /**
- * Base plugin class for the WordPress Content Directory.
+ * Base plugin class for the WordPress Contact Directory.
  *
- * @package WordPress Content Directory
+ * @package WordPress Contact Directory
  */
 
 namespace WPCD;
@@ -101,7 +101,7 @@ class Plugin {
 		// Supporting classes for the plugin that should be registered on the init hook.
 		$this->support = [
 			// Taxonomies.
-			'content_type_taxonomy' => new Taxonomy\ContactTypeTaxonomy(),
+			'contact_type_taxonomy' => new Taxonomy\ContactGroupTaxonomy(),
 
 			// Post Types.
 			'contact_post_type'     => new PostType\ContactPostType(),

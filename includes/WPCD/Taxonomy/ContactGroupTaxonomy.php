@@ -1,12 +1,12 @@
 <?php // @codingStandardsIgnoreLine
 /**
- * The contact type taxonomy is used to categorize contacts.
+ * The contact group taxonomy is used to categorize contacts.
  *
  * Usage:
  *
  * ```php
  *
- * $taxonomy = new ContactTypeTaxonomy();
+ * $taxonomy = new ContactGroupTaxonomy();
  * $taxonomy->register();
  *
  * ```
@@ -17,9 +17,9 @@
 namespace WPCD\Taxonomy;
 
 /**
- * A class for the Content Type Taxonomy.
+ * A class for the Contact Group Taxonomy.
  */
-class ContactTypeTaxonomy extends AbstractTaxonomy {
+class ContactGroupTaxonomy extends AbstractTaxonomy {
 	/**
 	 * Returns the name of the taxonomy.
 	 *
@@ -28,7 +28,7 @@ class ContactTypeTaxonomy extends AbstractTaxonomy {
 	 * @return string The name of the taxonomy.
 	 */
 	public function get_name() {
-		return WPCD_CONTACT_TYPE_TAXONOMY;
+		return WPCD_CONTACT_GROUP_TAXONOMY;
 	}
 
 	/**
@@ -39,7 +39,7 @@ class ContactTypeTaxonomy extends AbstractTaxonomy {
 	 * @return string The singular name for the taxonomy.
 	 */
 	public function get_singular_label() {
-		return esc_html__( 'Contact Type', 'wpcd' );
+		return esc_html__( 'Contact Group', 'wpcd' );
 	}
 
 	/**
@@ -50,7 +50,7 @@ class ContactTypeTaxonomy extends AbstractTaxonomy {
 	 * @return string The plural name for the taxonomy.
 	 */
 	public function get_plural_label() {
-		return esc_html__( 'Contact Types', 'wpcd' );
+		return esc_html__( 'Contact Groups', 'wpcd' );
 	}
 
 	/**

@@ -2,7 +2,7 @@
 /**
  * Holds configuration constants.
  *
- * @package WP Content Directory
+ * @package WP Contact Directory
  */
 
 $plugin_version = '0.1';
@@ -12,7 +12,7 @@ if ( file_exists( __DIR__ . '/.commit' ) ) {
 }
 
 // Plugin Constants.
-wpcd_define( 'WPCD_BUILDER_PLUGIN', __DIR__ . '/wp-content-directory.php' );
+wpcd_define( 'WPCD_BUILDER_PLUGIN', __DIR__ . '/wp-contact-directory.php' );
 wpcd_define( 'WPCD_PLUGIN_VERSION', $plugin_version );
 wpcd_define( 'WPCD_PLUGIN_DIR', __DIR__ );
 wpcd_define( 'WPCD_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -24,4 +24,4 @@ wpcd_define( 'WPCD_METABOX_PREFIX', 'wpcd_' );
 wpcd_define( 'WPCD_CONTACT_POST_TYPE', 'wpcd-contact' );
 
 // Taxonomies.
-wpcd_define( 'WPCD_CONTACT_TYPE_TAXONOMY', 'wpcd-contact-type' );
+wpcd_define( 'WPCD_CONTACT_GROUP_TAXONOMY', 'wpcd-contact-group' );

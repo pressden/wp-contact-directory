@@ -53,7 +53,7 @@ class ContactPostType extends AbstractPostType {
 	 */
 	public function get_supported_taxonomies() {
 		return [
-            WPCD_CONTACT_TYPE_TAXONOMY,
+            WPCD_CONTACT_GROUP_TAXONOMY,
         ];
 	}
 
@@ -81,7 +81,7 @@ class ContactPostType extends AbstractPostType {
 			'publicly_queryable'  => false,
 			'capability_type'     => 'post',
 			'rewrite'             => [
-				'slug' => 'contact',
+				'slug' => 'contact-directory',
 			],
 		];
 	}
