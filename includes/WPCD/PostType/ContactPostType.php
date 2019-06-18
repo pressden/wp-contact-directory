@@ -52,7 +52,9 @@ class ContactPostType extends AbstractPostType {
 	 * @return array The supported taxonomies for the post type.
 	 */
 	public function get_supported_taxonomies() {
-		return [];
+		return [
+            WPCD_CONTACT_TYPE_TAXONOMY,
+        ];
 	}
 
 	/**

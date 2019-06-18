@@ -24,4 +24,4 @@ wpcd_define( 'WPCD_METABOX_PREFIX', 'wpcd_' );
 wpcd_define( 'WPCD_CONTACT_POST_TYPE', 'wpcd-contact' );
 
 // Taxonomies.
-wpcd_define( 'EP_PERSON_TYPE_TAXONOMY', 'ep-person-type' );
+wpcd_define( 'WPCD_CONTACT_TYPE_TAXONOMY', 'wpcd-contact-type' );
