@@ -1,6 +1,6 @@
 {
-    "name": "wordpress-contenct-directory",
-    "description": "WordPress Contact Directory",
+    "name": "wp-contact-directory",
+    "description": "WP Contact Directory",
     "version": "0.1.0",
     "type": "wordpress-plugin",
     "keywords": [],
