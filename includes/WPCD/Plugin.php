@@ -62,7 +62,7 @@ class Plugin {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @return \EP_Rules_Builder\Plugin A singleton instance of this class.
+	 * @return \WPCD\Plugin A singleton instance of this class.
 	 */
 	public static function get_instance() {
 		if ( null === self::$singleton_instance ) {
