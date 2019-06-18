@@ -100,6 +100,9 @@ class Plugin {
 
 		// Supporting classes for the plugin that should be registered on the init hook.
 		$this->support = [
+      // Misc.
+      'archive_support'      => new Template\ArchiveTemplateSupport(),
+
 			// Taxonomies.
 			'contact_type_taxonomy' => new Taxonomy\ContactGroupTaxonomy(),
 
