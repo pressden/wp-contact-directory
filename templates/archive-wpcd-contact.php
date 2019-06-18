@@ -1,6 +1,6 @@
 <?php
 /**
- * å\Contact Archive Template.
+ * Contact Archive Template.
  *
  * This file serves as a custom archive template for the contact post type.
  */

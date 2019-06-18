@@ -41,9 +41,9 @@ class ArchiveTemplateSupport implements \WPCD\RegistrationInterface {
    */
   public function archive_template( $template ) {
     // Bail early if no a post type archive.
-    if ( ! is_post_type_archive( WPCD_CONTACT_POST_TYPE ) ) {
-      return $template;
-    }
+    // if ( ! is_post_type_archive( WPCD_CONTACT_POST_TYPE ) ) {
+    //   return $template;
+    // }
 
     $override_template = 'archive-wpcd-contact.php';
 
