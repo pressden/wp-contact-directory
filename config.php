@@ -21,7 +21,7 @@ wpcd_define( 'WPCD_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 wpcd_define( 'WPCD_METABOX_PREFIX', 'wpcd_' );
 
 // Post Types.
-wpcd_define( 'EP_PERSON_POST_TYPE', 'ep-person' );
+wpcd_define( 'WPCD_CONTACT_POST_TYPE', 'wpcd-contact' );
 
 // Taxonomies.
 wpcd_define( 'EP_PERSON_TYPE_TAXONOMY', 'ep-person-type' );

@@ -99,7 +99,10 @@ class Plugin {
 		}
 
 		// Supporting classes for the plugin that should be registered on the init hook.
-		$this->support = [];
+		$this->support = [
+			// Post Types.
+			'contact_post_type' => new PostType\ContactPostType(),
+		];
 
 		// Register objects.
 		$this->register_objects( $this->support );
