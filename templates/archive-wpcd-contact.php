@@ -13,25 +13,24 @@ get_header();
 // get the current URL so we can add active states to our taxonomy filters
 $current_page_url = home_url( $wp->request ) . '/';
 
-// default variables
-$view_all = ( is_archive() ) ? false : true;
+// Default variables.
+$view_all     = ! is_archive();
 $view_all_url = '/contact-directory/';
-$taxonomy = WPCD_CONTACT_GROUP_TAXONOMY;
+$taxonomy     = WPCD_CONTACT_GROUP_TAXONOMY;
 $current_term = ( is_single() ) ? get_the_terms( $post, $taxonomy )[0] : null;
-$terms = null;
 
-// define args that will retrieve all children of the "Knowledge Center" category (id: 222)
-$args = array(
-	'taxonomy' => $taxonomy
-);
+// Define args that will retrieve all children of the "Knowledge Center" category (id: 222).
+$args = [
+	'taxonomy' => $taxonomy,
+];
 
-// get the terms
+// Get the terms.
 $terms = get_terms( $args );
 $groups = array();
 
-// loop through the terms
+// Loop through the terms.
 foreach( $terms as $term ) {
-	// get the contacts for this contact group
+	// Get the contacts for this contact group.
 	$args = array(
 		'post_type' => 'contact',
 		'posts_per_page' => -1,
@@ -58,7 +57,7 @@ foreach( $terms as $term ) {
 	<ul class="nav filter-nav contact-group-nav flex-column">
 
 		<?php
-		// loop through the groups
+		// Loop through the groups.
     foreach( $groups as $group ) :
       $term = $group['term'];
 			$posts = $group['query']->posts;
@@ -104,7 +103,7 @@ foreach( $terms as $term ) {
 		echo '<a href="' . $view_all_url . '" class="btn btn-primary my-3 w-100">View All</a>';
 	}
 
-  // loop through the groups
+  // loop through the groups.
   foreach( $groups as $group ) {
     $term = $group['term'];
     $query = $group['query'];
