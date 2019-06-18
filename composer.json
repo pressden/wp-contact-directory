@@ -1,0 +1,28 @@
+{
+    "name": "wordpress-contenct-directory",
+    "description": "WordPress Contact Directory",
+    "version": "0.1.0",
+    "type": "wordpress-plugin",
+    "keywords": [],
+    "authors": [
+        {
+            "name": "Boulton",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "~7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~5.7.0",
+        "phpunit/dbunit": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "WPCD\\": "includes/WPCD"
+        },
+        "files": [
+            "includes/WPCD/Helpers.php"
+        ]
+    }
+}
