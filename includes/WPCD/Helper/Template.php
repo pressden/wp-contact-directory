@@ -10,22 +10,26 @@ namespace EP_Rules_Builder;
 /**
  * Helper function for including a template.
  *
- * @since 0.1.0
- *
- * @param string $template The template name to include.
+ * @param string $template  The template name to include.
  * @param array  $params    An array of parameters to include with the template.
- * @param array  $opts      Options for including the template.
- * @return void
+ * @return string           Markup for the template.
  */
-function include_template( $template, array $params = [], array $opts = [] ) {
-	$template_dir = EP_RULES_BUILDER_PLUGIN_DIR . '/templates/';
+function include_template( $template, array $params = [] ) {
+	// Attempt to locate the file in the theme.
+	if ( '' !== locate_template( $template ) ) {
+		$template = get_stylesheet_directory() . '/' . $template;
+	} else {
+		$template = EAB_PLUGIN_DIR . '/templates/' . $template;
+	}
 
 	// Bail early if the template does not exist.
-	if ( ! file_exists( $template_dir . $template ) ) {
-		return;
+	if ( ! file_exists( $template ) ) {
+		return '';
 	}
+
+	ob_start();
 
 	// Extract params array to make keys available as direct variables.
 	extract( $params ); // @codingStandardsIgnoreLine
-	include $template_dir . $template;
+	include $template;
 }
