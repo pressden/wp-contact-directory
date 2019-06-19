@@ -19,8 +19,8 @@ class ArchiveTemplateSupport implements \WPCD\RegistrationInterface {
 	 * @return bool True if the object should be registered, false otherwise.
 	 */
 	public function can_register() {
-    return ! is_admin();
-  }
+		return ! is_admin();
+	}
 
 	/**
 	 * Registration method for the object.
@@ -30,31 +30,31 @@ class ArchiveTemplateSupport implements \WPCD\RegistrationInterface {
 	 * @return void
 	 */
 	public function register() {
-    add_filter( 'template_include', [ $this, 'archive_template' ], 999, 1 );
-  }
+		add_filter( 'template_include', [ $this, 'archive_template' ], 999, 1 );
+	}
 
-  /**
-   * Override the archive template.
-   *
-   * @param string $template The current archive template.
-   * @return string          The updated archive template.
-   */
-  public function archive_template( $template ) {
-    // Bail early if no a post type archive.
-    if ( ! is_post_type_archive( WPCD_CONTACT_POST_TYPE ) ) {
-      return $template;
-    }
+	/**
+	 * Override the archive template.
+	 *
+	 * @param string $template The current archive template.
+	 * @return string          The updated archive template.
+	 */
+	public function archive_template( $template ) {
+		// Bail early if no a post type archive.
+		// if ( ! is_post_type_archive( WPCD_CONTACT_POST_TYPE ) ) {
+		//   return $template;
+		// }
 
-    $override_template = 'archive-wpcd-contact.php';
+		$override_template = 'archive-wpcd-contact.php';
 
-    // Attempt to locate the file in the theme.
-    if ( '' !== locate_template( $override_template ) ) {
-      $override_template = get_stylesheet_directory() . '/' . $override_template;
-    } else {
-      $override_template = WPCD_PLUGIN_DIR . '/templates/' . $override_template;
-    }
+		// Attempt to locate the file in the theme.
+		if ( '' !== locate_template( $override_template ) ) {
+			$override_template = get_stylesheet_directory() . '/' . $override_template;
+		} else {
+			$override_template = WPCD_PLUGIN_DIR . '/templates/' . $override_template;
+		}
 
-    // Bail early if the template does not exist.
-    return file_exists( $override_template ) ? $override_template : $template;
-  }
+		// Bail early if the template does not exist.
+		return file_exists( $override_template ) ? $override_template : $template;
+	}
 }
