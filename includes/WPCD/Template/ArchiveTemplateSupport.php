@@ -43,7 +43,7 @@ class ArchiveTemplateSupport implements \WPCD\RegistrationInterface {
 		global $wp_query;
 
 		// Bail early if no a post type archive.
-		if ( 'contact-directory' !== $wp_query->query['pagename'] ) {
+		if ( ! empty( $wp_query->query['pagename'] ) && ( 'contact-directory' !== $wp_query->query['pagename'] ) ) {
 			return $template;
 		}
 
