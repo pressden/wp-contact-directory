@@ -31,6 +31,7 @@ class ArchiveTemplateSupport implements \WPCD\RegistrationInterface {
 	 */
 	public function register() {
 		add_filter( 'template_include', [ $this, 'archive_template' ], 999, 1 );
+		add_filter( 'document_title_parts', [ $this, 'archive_template_title' ], 999, 1 );
 	}
 
 	/**
@@ -58,5 +59,24 @@ class ArchiveTemplateSupport implements \WPCD\RegistrationInterface {
 
 		// Bail early if the template does not exist.
 		return file_exists( $override_template ) ? $override_template : $template;
+	}
+
+	/**
+	 * Filters the archive title.
+	 *
+	 * @param string $title The current title.
+	 * @return string       The modified title.
+	 */
+	public function archive_template_title( $title_parts ) {
+		global $wp_query;
+
+		// Bail early if no a post type archive.
+		if ( ! empty( $wp_query->query['pagename'] ) && ( 'contact-directory' !== $wp_query->query['pagename'] ) ) {
+			return $title_parts;
+		}
+
+		$title_parts['title'] = sprintf( esc_html__( 'Contact Archive | %1$s', 'wpcd' ), get_bloginfo( 'blogname' ) ); // @codingStandardsIgnoreLine
+
+		return $title_parts;
 	}
 }
