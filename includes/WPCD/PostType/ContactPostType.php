@@ -53,8 +53,8 @@ class ContactPostType extends AbstractPostType {
 	 */
 	public function get_supported_taxonomies() {
 		return [
-            WPCD_CONTACT_GROUP_TAXONOMY,
-        ];
+			WPCD_CONTACT_GROUP_TAXONOMY,
+		];
 	}
 
 	/**
@@ -76,9 +76,9 @@ class ContactPostType extends AbstractPostType {
 			'menu_icon'           => 'dashicons-businessman',
 			'menu_position'       => 12,
 			'can_export'          => true,
-			'has_archive'         => false,
+			'has_archive'         => true,
 			'exclude_from_search' => true,
-			'publicly_queryable'  => false,
+			'publicly_queryable'  => true,
 			'capability_type'     => 'post',
 			'rewrite'             => [
 				'slug' => 'contact-directory',
@@ -95,11 +95,11 @@ class ContactPostType extends AbstractPostType {
 	 * @return array Editor supports for the CPT.
 	 */
 	public function get_editor_supports() {
-        return [
-            'title',
-            'editor',
-            'thumbnail',
-            'excerpt',
-        ];
+			return [
+				'title',
+				'editor',
+				'thumbnail',
+				'excerpt',
+			];
 	}
 }

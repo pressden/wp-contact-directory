@@ -40,10 +40,12 @@ class ArchiveTemplateSupport implements \WPCD\RegistrationInterface {
 	 * @return string          The updated archive template.
 	 */
 	public function archive_template( $template ) {
+		global $wp_query;
+
 		// Bail early if no a post type archive.
-		// if ( ! is_post_type_archive( WPCD_CONTACT_POST_TYPE ) ) {
-		//   return $template;
-		// }
+		if ( 'contact-directory' !== $wp_query->query['pagename'] ) {
+			return $template;
+		}
 
 		$override_template = 'archive-wpcd-contact.php';
 
