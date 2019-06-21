@@ -143,8 +143,8 @@ foreach ( $terms as $the_term ) {
 				}
 				?>
 		<?php else : ?>
-    <main class="content col-lg-9 order-lg-last" id="genesis-content">
-	<div class="row">
+	<main class="content col-lg-9 order-lg-last" id="genesis-content">
+	  <div class="row">
 
 
 		<div class="media-container contact-image-container col-md-4">
@@ -153,8 +153,8 @@ foreach ( $terms as $the_term ) {
 		<article class="post-9675 contact type-contact status-publish format-standard has-post-thumbnail contact-group-consulting-services-team entry col-md-8" itemscope="" itemtype="https://schema.org/CreativeWork"><header class="entry-header clearfix">
 			<div class="entry-header-container container">
 
-		  	<h1 class="entry-title" itemprop="headline"><?php the_title(); ?></h1>
-        <p class="entry-meta">Senior Project Director</p>
+			  <h1 class="entry-title" itemprop="headline"><?php the_title(); ?></h1>
+		<p class="entry-meta">Senior Project Director</p>
 			</div>
 
 			</header><div class="entry-content clearfix" itemprop="text">
@@ -164,7 +164,7 @@ foreach ( $terms as $the_term ) {
 
 <div class="content-col col">
 
-  <?php the_content(); ?>
+			<?php the_content(); ?>
 </div>
 
 
