@@ -7,9 +7,7 @@
 
 
 get_header();
-?>
 
-<?php
 // get the current URL so we can add active states to our taxonomy filters
 $current_page_url = home_url( $wp->request ) . '/';
 
@@ -30,7 +28,7 @@ $groups = array();
 // Loop through the terms.
 foreach ( $terms as $the_term ) {
 	// Get the contacts for this contact group.
-	$args = [
+	$args  = [
 		'post_type'      => WPCD_CONTACT_POST_TYPE,
 		'posts_per_page' => -1,
 		'orderby'        => 'menu_order',
@@ -52,7 +50,7 @@ foreach ( $terms as $the_term ) {
 }
 
 ?>
-
+<div class="facet-bar">
 	<ul class="nav filter-nav contact-group-nav flex-column">
 
 		<?php
@@ -101,42 +99,90 @@ foreach ( $terms as $the_term ) {
 	if ( $view_all ) {
 		echo '<a href="' . esc_url( $view_all_url ) . '" class="btn btn-primary my-3 w-100">View All</a>';
 	}
+	?>
+ </div>
 
-	// loop through the groups.
-	foreach ( $groups as $group ) {
-		$group_term = $group['term'];
-		$query      = $group['query'];
-		?>
+	<div class="results">
+		<?php if ( ! is_single() ) : ?>
+				<?php
+				// loop through the groups.
+				foreach ( $groups as $group ) {
+					$group_term = $group['term'];
+					$query      = $group['query'];
+					?>
 
-		<h1 class="col-12"><?php echo esc_html( $group_term->name ); ?></h1>
+					<h1 class="col-12"><?php echo esc_html( $group_term->name ); ?></h1>
 
-		<?php
-		while ( $query->have_posts() ) {
-			$query->the_post();
+					<?php
+					while ( $query->have_posts() ) {
+						$query->the_post();
 
-			$post_thumbnail = get_the_post_thumbnail( $query->post->ID, 'full', array( 'class' => 'img-fluid mx-auto d-block' ) );
-			?>
+						$post_thumbnail = get_the_post_thumbnail( $query->post->ID, 'full', array( 'class' => 'img-fluid mx-auto d-block' ) );
+						?>
 
-			<div class="directory-image media-container">
-				<a href="<?php echo esc_url( get_permalink( $query->post ) ); ?>">
-					<?php echo wp_kses_post( $post_thumbnail ); ?>
-				</a>
+						<div class="directory-image media-container">
+							<a href="<?php echo esc_url( get_permalink( $query->post ) ); ?>">
+								<?php echo wp_kses_post( $post_thumbnail ); ?>
+							</a>
 
-				<div class="directory-details">
-					<div class="directory-name">
-						<a href="<?php echo esc_url( get_permalink( $query->post ) ); ?>">
-							<?php echo wp_kses_post( $query->post->name ); ?>
-						</a>
-					</div>
+							<div class="directory-details">
+								<div class="directory-name">
+									<a href="<?php echo esc_url( get_permalink( $query->post ) ); ?>">
+										<?php echo wp_kses_post( $query->post->name ); ?>
+									</a>
+								</div>
 
-					<div class="directory-title">
-						<?php echo wp_kses_post( $query->post->title ); ?>
-					</div>
+								<div class="directory-title">
+									<?php echo wp_kses_post( $query->post->title ); ?>
+								</div>
+
+							</div>
+						</div>
+						<?php
+					}
+				}
+				?>
+		<?php else : ?>
+    <main class="content col-lg-9 order-lg-last" id="genesis-content">
+	<div class="row">
+
+
+		<div class="media-container contact-image-container col-md-4">
+			<?php echo get_the_post_thumbnail( $query->post->ID, 'full', array( 'class' => 'img-fluid mx-auto d-block' ) ); ?>
+
+		<article class="post-9675 contact type-contact status-publish format-standard has-post-thumbnail contact-group-consulting-services-team entry col-md-8" itemscope="" itemtype="https://schema.org/CreativeWork"><header class="entry-header clearfix">
+			<div class="entry-header-container container">
+
+		  	<h1 class="entry-title" itemprop="headline"><?php the_title(); ?></h1>
+        <p class="entry-meta">Senior Project Director</p>
+			</div>
+
+			</header><div class="entry-content clearfix" itemprop="text">
+		<section id="apl-content-0-content" class="content-wrap layer-wrap ">
+			<div class="container content-container">
+				<div class="content-layer layer row">
+
+<div class="content-col col">
+
+  <?php the_content(); ?>
+</div>
+
 
 				</div>
 			</div>
-			<?php
-		}
-	}
+		</section>
+	</div><footer class="entry-footer clearfix">
+			<div class="entry-footer-container container">
 
+
+			</div>
+
+			</footer></article><h2 class="screen-reader-text">Reader Interactions</h2>
+	</div>
+
+	</main>
+		<?php endif; ?>
+	</div>
+
+<?php
 get_footer();

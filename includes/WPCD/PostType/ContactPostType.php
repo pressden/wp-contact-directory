@@ -68,7 +68,7 @@ class ContactPostType extends AbstractPostType {
 		return [
 			'labels'              => $this->get_labels(),
 			'supports'            => $this->get_editor_supports(),
-			'public'              => false,
+			'public'              => true,
 			'show_ui'             => true,
 			'show_in_menu'        => true,
 			'show_in_nav_menus'   => false,
@@ -79,7 +79,6 @@ class ContactPostType extends AbstractPostType {
 			'has_archive'         => true,
 			'exclude_from_search' => true,
 			'publicly_queryable'  => true,
-			'capability_type'     => 'post',
 			'rewrite'             => [
 				'slug' => 'contact-directory',
 			],

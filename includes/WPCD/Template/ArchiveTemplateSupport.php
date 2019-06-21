@@ -43,8 +43,11 @@ class ArchiveTemplateSupport implements \WPCD\RegistrationInterface {
 	public function archive_template( $template ) {
 		global $wp_query;
 
+		$is_archive = ! empty( $wp_query->query['pagename'] ) && ( 'contact-directory' === $wp_query->query['pagename'] );
+		$is_single  = ! empty( $wp_query->query['post_type'] ) && ( WPCD_CONTACT_POST_TYPE === $wp_query->query['post_type'] );
+
 		// Bail early if no a post type archive.
-		if ( ! empty( $wp_query->query['pagename'] ) && ( 'contact-directory' !== $wp_query->query['pagename'] ) ) {
+		if ( ! $is_archive && ! $is_single ) {
 			return $template;
 		}
 
@@ -70,8 +73,11 @@ class ArchiveTemplateSupport implements \WPCD\RegistrationInterface {
 	public function archive_template_title( $title_parts ) {
 		global $wp_query;
 
+		$is_archive = ! empty( $wp_query->query['pagename'] ) && ( 'contact-directory' === $wp_query->query['pagename'] );
+		$is_single  = ! empty( $wp_query->query['post_type'] ) && ( WPCD_CONTACT_POST_TYPE === $wp_query->query['post_type'] );
+
 		// Bail early if no a post type archive.
-		if ( ! empty( $wp_query->query['pagename'] ) && ( 'contact-directory' !== $wp_query->query['pagename'] ) ) {
+		if ( ! $is_archive && ! $is_single ) {
 			return $title_parts;
 		}
 
