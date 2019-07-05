@@ -5,7 +5,7 @@
  * @package WPCD
  */
 
-namespace EAB\Admin\MetaBox;
+namespace WPCD\Admin\MetaBox;
 
 /**
  * A class for the Contact Details meta box.
