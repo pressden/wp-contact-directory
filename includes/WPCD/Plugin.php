@@ -122,7 +122,10 @@ class Plugin {
 	 * @return void
 	 */
 	protected function init_admin_support() {
-		$this->admin_support = [];
+		$this->admin_support = [
+			// Meta Boxes.
+			'contact_details_meta_box' => new Admin\MetaBox\ContactDetailsMetaBox(),
+		];
 
 		// Register objects.
 		$this->register_objects( $this->admin_support );
