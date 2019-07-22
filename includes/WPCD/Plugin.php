@@ -100,8 +100,8 @@ class Plugin {
 
 		// Supporting classes for the plugin that should be registered on the init hook.
 		$this->support = [
-      // Misc.
-      'archive_support'      => new Template\ArchiveTemplateSupport(),
+			// Misc.
+			'archive_support'       => new Template\ArchiveTemplateSupport(),
 
 			// Taxonomies.
 			'contact_type_taxonomy' => new Taxonomy\ContactGroupTaxonomy(),
@@ -122,7 +122,10 @@ class Plugin {
 	 * @return void
 	 */
 	protected function init_admin_support() {
-		$this->admin_support = [];
+		$this->admin_support = [
+			// Meta Boxes.
+			'contact_details_meta_box' => new Admin\MetaBox\ContactDetailsMetaBox(),
+		];
 
 		// Register objects.
 		$this->register_objects( $this->admin_support );

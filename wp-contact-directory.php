@@ -145,7 +145,7 @@ function wpcd_autoload_notice() {
  * @return bool True if the plugin requirements are met, false otherwise.
  */
 function wpcd_requirements_met() {
-	return true;
+	return class_exists( '\Fieldmanager_Group' );
 }
 
 /**
@@ -156,6 +156,21 @@ function wpcd_requirements_met() {
  * @return void
  */
 function wpcd_requirements_notice() {
+	?>
+	<p>
+		<?php
+		wp_kses_post(
+			sprintf(
+				__(
+					'This plugin requires <a href="%1$s">Fieldmanager</a>.',
+					'wpcd'
+				),
+				'https://github.com/alleyinteractive/wordpress-fieldmanager'
+			)
+		);
+		?>
+	</p>
+	<?php
 }
 
 // Kick off the plugin.
