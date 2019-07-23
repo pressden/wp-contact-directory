@@ -60,25 +60,7 @@ class ContactDetailsMetaBox extends AbstractMetaBox {
 	public function get_meta_box() {
 		// Create fields.
 		$fields = [
-			'first_name' => new \Fieldmanager_Textfield(
-				[
-					'label'            => esc_html__( 'First Name', 'wpcd' ),
-					'input_type'       => 'text',
-					'validation_rules' => [
-						'required' => true,
-					],
-				]
-			),
-			'last_name'  => new \Fieldmanager_Textfield(
-				[
-					'label'            => esc_html__( 'Last Name', 'wpcd' ),
-					'input_type'       => 'text',
-					'validation_rules' => [
-						'required' => true,
-					],
-				]
-			),
-			'tagline'    => new \Fieldmanager_Textfield(
+			'tagline'  => new \Fieldmanager_Textfield(
 				[
 					'label'            => esc_html__( 'Tagline', 'wpcd' ),
 					'description'      => esc_html__( 'Shows under the contact\'s name', 'wpcd' ),
@@ -88,7 +70,7 @@ class ContactDetailsMetaBox extends AbstractMetaBox {
 					],
 				]
 			),
-			'location'   => new \Fieldmanager_Textfield(
+			'location' => new \Fieldmanager_Textfield(
 				[
 					'label'            => esc_html__( 'Location', 'wpcd' ),
 					'input_type'       => 'text',
@@ -97,7 +79,7 @@ class ContactDetailsMetaBox extends AbstractMetaBox {
 					],
 				]
 			),
-			'email'      => new \Fieldmanager_Textfield(
+			'email'    => new \Fieldmanager_Textfield(
 				[
 					'label'            => esc_html__( 'Email', 'wpcd' ),
 					'input_type'       => 'text',
@@ -106,7 +88,7 @@ class ContactDetailsMetaBox extends AbstractMetaBox {
 					],
 				]
 			),
-			'twitter'    => new \Fieldmanager_Textfield(
+			'twitter'  => new \Fieldmanager_Textfield(
 				[
 					'label'            => esc_html__( 'Twitter', 'wpcd' ),
 					'input_type'       => 'url',
@@ -116,7 +98,7 @@ class ContactDetailsMetaBox extends AbstractMetaBox {
 					],
 				]
 			),
-			'linkedin'   => new \Fieldmanager_Textfield(
+			'linkedin' => new \Fieldmanager_Textfield(
 				[
 					'label'            => esc_html__( 'LinkedIn', 'wpcd' ),
 					'input_type'       => 'url',
