@@ -160,9 +160,11 @@ foreach ( $terms as $the_term ) {
 						<article class="post-9675 contact type-contact status-publish format-standard has-post-thumbnail contact-group-consulting-services-team entry col-md-8" itemscope="" itemtype="https://schema.org/CreativeWork"><header class="entry-header clearfix">
 							<div class="entry-header-container container">
 								<h1 class="entry-title" itemprop="headline"><?php the_title(); ?></h1>
+
 								<?php if ( ! empty( $tagline ) ) : ?>
 									<p class="entry-meta"><?php echo esc_html( $tagline ); ?></p>
 								<?php endif; ?>
+
 							</div>
 
 							</header>
