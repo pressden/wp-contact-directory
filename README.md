@@ -1,1 +1,1 @@
-# wp-contact-directory
+# WP Contact Directory
