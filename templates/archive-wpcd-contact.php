@@ -145,7 +145,7 @@ foreach ( $terms as $the_term ) {
 				?>
 			<?php
 		else :
-			$tagline  = get_post_meta( $query->post->ID, 'wpcd_contact_details_tagline', true );
+			$description  = get_post_meta( $query->post->ID, 'wpcd_contact_details_description', true );
 			$location = get_post_meta( $query->post->ID, 'wpcd_contact_details_location', true );
 			$email    = get_post_meta( $query->post->ID, 'wpcd_contact_details_email', true );
 			$twitter  = get_post_meta( $query->post->ID, 'wpcd_contact_details_twitter', true );
@@ -161,8 +161,8 @@ foreach ( $terms as $the_term ) {
 							<div class="entry-header-container container">
 								<h1 class="entry-title" itemprop="headline"><?php the_title(); ?></h1>
 
-								<?php if ( ! empty( $tagline ) ) : ?>
-									<p class="entry-meta"><?php echo esc_html( $tagline ); ?></p>
+								<?php if ( ! empty( $description ) ) : ?>
+									<p class="entry-meta"><?php echo esc_html( $description ); ?></p>
 								<?php endif; ?>
 
 							</div>

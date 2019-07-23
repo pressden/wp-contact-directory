@@ -60,10 +60,9 @@ class ContactDetailsMetaBox extends AbstractMetaBox {
 	public function get_meta_box() {
 		// Create fields.
 		$fields = [
-			'tagline'  => new \Fieldmanager_Textfield(
+			'description'  => new \Fieldmanager_Textfield(
 				[
-					'label'            => esc_html__( 'Tagline', 'wpcd' ),
-					'description'      => esc_html__( 'Shows under the contact\'s name', 'wpcd' ),
+					'label'            => esc_html__( 'Job Title / Description', 'wpcd' ),
 					'input_type'       => 'text',
 					'validation_rules' => [
 						'required' => false,
