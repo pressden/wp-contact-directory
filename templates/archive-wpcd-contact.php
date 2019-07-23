@@ -157,7 +157,7 @@ foreach ( $terms as $the_term ) {
 					<div class="media-container contact-image-container col-md-4">
 						<?php echo get_the_post_thumbnail( $query->post->ID, 'full', array( 'class' => 'img-fluid mx-auto d-block' ) ); ?>
 
-						<article class="post-9675 contact type-contact status-publish format-standard has-post-thumbnail contact-group-consulting-services-team entry col-md-8" itemscope="" itemtype="https://schema.org/CreativeWork"><header class="entry-header clearfix">
+						<article class="post-<?php echo absint( $query->post->ID ); ?> contact type-contact status-publish format-standard has-post-thumbnail contact-group-consulting-services-team entry col-md-8" itemscope="" itemtype="https://schema.org/CreativeWork"><header class="entry-header clearfix">
 							<div class="entry-header-container container">
 								<h1 class="entry-title" itemprop="headline"><?php the_title(); ?></h1>
 
