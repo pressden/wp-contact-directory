@@ -1,8 +1,8 @@
 <?php // @codingStandardsIgnoreLine
 /**
- * Base plugin class for the WordPress Contact Directory.
+ * Base plugin class for the WP Contact Directory.
  *
- * @package WordPress Contact Directory
+ * @package WP Contact Directory
  */
 
 namespace WPCD;

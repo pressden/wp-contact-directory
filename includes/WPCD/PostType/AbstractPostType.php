@@ -2,7 +2,7 @@
 /**
  * Base class for post types.
  *
- * @package WordPress Contact Directory
+ * @package WP Contact Directory
  */
 
 namespace WPCD\PostType;

@@ -2,7 +2,7 @@
 /**
  * An interface for registration objects to implement.
  *
- * @package WordPress Contact Directory
+ * @package WP Contact Directory
  */
 
 namespace WPCD;

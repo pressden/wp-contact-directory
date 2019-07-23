@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: WordPress Contact Directory
+ * Plugin Name: WP Contact Directory
  * Description: Directory for contacts.
  * Version:     0.1.0
  * Author:      Boulton
@@ -8,7 +8,7 @@
  * Text Domain: wpcd
  * Domain Path: /languages/
  *
- * @package WordPress Client Directory
+ * @package WP Contact Directory
  */
 
 // Exit if accessed directly.
@@ -131,7 +131,7 @@ function wpcd_autorun() {
  */
 function wpcd_autoload_notice() {
 	$class   = 'notice notice-error';
-	$message = 'Error: Please run $ composer install in the WordPress Contact Directory plugin directory.';
+	$message = 'Error: Please run $ composer install in the WP Contact Directory plugin directory.';
 
 	printf( '<div class="%1$s"><p>%2$s</p></div>', esc_html( $class ), wp_kses_post( $message ) );
 	error_log( $message ); // @codingStandardsIgnoreLine

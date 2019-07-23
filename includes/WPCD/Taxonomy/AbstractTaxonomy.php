@@ -2,7 +2,7 @@
 /**
  * Base class for taxonomies
  *
- * @package WordPress Contact Directory
+ * @package WP Contact Directory
  */
 
 namespace WPCD\Taxonomy;
