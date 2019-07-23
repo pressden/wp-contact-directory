@@ -3,8 +3,9 @@
  * Contact Archive Template.
  *
  * This file serves as a custom archive template for the contact post type.
+ *
+ * @package WP Contact Directory
  */
-
 
 get_header();
 
@@ -144,45 +145,42 @@ foreach ( $terms as $the_term ) {
 				?>
 		<?php else : ?>
 	<main class="content col-lg-9 order-lg-last" id="genesis-content">
-	  <div class="row">
+		<div class="row">
 
+			<div class="media-container contact-image-container col-md-4">
+				<?php echo get_the_post_thumbnail( $query->post->ID, 'full', array( 'class' => 'img-fluid mx-auto d-block' ) ); ?>
 
-		<div class="media-container contact-image-container col-md-4">
-			<?php echo get_the_post_thumbnail( $query->post->ID, 'full', array( 'class' => 'img-fluid mx-auto d-block' ) ); ?>
+				<article class="post-9675 contact type-contact status-publish format-standard has-post-thumbnail contact-group-consulting-services-team entry col-md-8" itemscope="" itemtype="https://schema.org/CreativeWork"><header class="entry-header clearfix">
+					<div class="entry-header-container container">
+						<h1 class="entry-title" itemprop="headline"><?php the_title(); ?></h1>
+						<p class="entry-meta">Senior Project Director</p>
+					</div>
 
-		<article class="post-9675 contact type-contact status-publish format-standard has-post-thumbnail contact-group-consulting-services-team entry col-md-8" itemscope="" itemtype="https://schema.org/CreativeWork"><header class="entry-header clearfix">
-			<div class="entry-header-container container">
+					</header>
+						<div class="entry-content clearfix" itemprop="text">
+							<section id="apl-content-0-content" class="content-wrap layer-wrap">
+								<div class="container content-container">
+									<div class="content-layer layer row">
 
-			  <h1 class="entry-title" itemprop="headline"><?php the_title(); ?></h1>
-		<p class="entry-meta">Senior Project Director</p>
+										<div class="content-col col">
+											<?php the_content(); ?>
+										</div>
+
+									</div>
+								</div>
+							</section>
+						</div>
+						<footer class="entry-footer clearfix">
+							<div class="entry-footer-container container"></div>
+
+						</footer>
+				</article>
+				<h2 class="screen-reader-text">Reader Interactions</h2>
 			</div>
 
-			</header><div class="entry-content clearfix" itemprop="text">
-		<section id="apl-content-0-content" class="content-wrap layer-wrap ">
-			<div class="container content-container">
-				<div class="content-layer layer row">
-
-<div class="content-col col">
-
-			<?php the_content(); ?>
-</div>
-
-
-				</div>
-			</div>
-		</section>
-	</div><footer class="entry-footer clearfix">
-			<div class="entry-footer-container container">
-
-
-			</div>
-
-			</footer></article><h2 class="screen-reader-text">Reader Interactions</h2>
-	</div>
-
-	</main>
-		<?php endif; ?>
-	</div>
+			</main>
+				<?php endif; ?>
+		</div>
 
 <?php
 get_footer();
