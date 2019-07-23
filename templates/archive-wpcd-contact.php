@@ -17,7 +17,7 @@ $view_all     = ! is_archive();
 $view_all_url = '/contact-directory/';
 $current_term = ( is_single() ) ? get_the_terms( $post, WPCD_CONTACT_GROUP_TAXONOMY )[0] : null;
 
-// Define args that will retrieve all children of the "Knowledge Center" category (id: 222).
+// Define args that will retrieve all children of the contact group taxonomy.
 $args = [
 	'taxonomy' => WPCD_CONTACT_GROUP_TAXONOMY,
 ];
