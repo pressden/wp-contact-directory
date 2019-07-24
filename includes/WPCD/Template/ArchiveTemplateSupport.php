@@ -46,7 +46,7 @@ class ArchiveTemplateSupport implements \WPCD\RegistrationInterface {
 		$is_archive = ! empty( $wp_query->query['pagename'] ) && ( 'contact-directory' === $wp_query->query['pagename'] );
 		$is_single  = ! empty( $wp_query->query['post_type'] ) && ( WPCD_CONTACT_POST_TYPE === $wp_query->query['post_type'] );
 
-		// Bail early if no a post type archive.
+		// Bail early if not a post type archive.
 		if ( ! $is_archive && ! $is_single ) {
 			return $template;
 		}
