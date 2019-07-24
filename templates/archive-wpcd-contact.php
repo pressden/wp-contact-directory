@@ -67,7 +67,7 @@ foreach ( $terms as $the_term ) {
 
 			<li class="nav-item">
 				<a href="#<?php echo esc_attr( $target ); ?>" class="nav-link" data-toggle="collapse" aria-expanded="<?php echo esc_attr( $expanded ); ?>">
-					<i class="material-icons"><?php esc_html_e( 'keyboard_arrow_right', 'wpcd' ); ?></i>
+          <span class="dashicons dashicons-arrow-right-alt2"></span>
 					<?php echo esc_html( $group_term->name ); ?>
 				</a>
 
