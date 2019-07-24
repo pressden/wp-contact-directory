@@ -146,10 +146,10 @@ foreach ( $terms as $the_term ) {
 			<?php
 		else :
 			$description  = get_post_meta( $query->post->ID, 'wpcd_contact_details_description', true );
-			$location = get_post_meta( $query->post->ID, 'wpcd_contact_details_location', true );
-			$email    = get_post_meta( $query->post->ID, 'wpcd_contact_details_email', true );
-			$twitter  = get_post_meta( $query->post->ID, 'wpcd_contact_details_twitter', true );
-			$linkedin = get_post_meta( $query->post->ID, 'wpcd_contact_details_linkedin', true );
+			$location     = get_post_meta( $query->post->ID, 'wpcd_contact_details_location', true );
+			$email        = get_post_meta( $query->post->ID, 'wpcd_contact_details_email', true );
+			$twitter      = get_post_meta( $query->post->ID, 'wpcd_contact_details_twitter', true );
+			$linkedin     = get_post_meta( $query->post->ID, 'wpcd_contact_details_linkedin', true );
 			?>
 			<main class="content col-lg-9 order-lg-last" id="genesis-content">
 				<div class="row">
