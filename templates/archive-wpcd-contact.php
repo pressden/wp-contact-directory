@@ -53,7 +53,7 @@ foreach ( $terms as $the_term ) {
 ?>
 
 <div class="wpcd-wrap">
-  <div class="facet-bar">
+  <div class="wpcd-sidebar">
     <ul class="nav filter-nav contact-group-nav flex-column">
 
       <?php
@@ -105,7 +105,7 @@ foreach ( $terms as $the_term ) {
     ?>
   </div>
 
-	<div class="results">
+	<div class="wpcd-content">
 		<?php if ( ! is_single() ) : ?>
 				<?php
 				// loop through the groups.
@@ -114,35 +114,40 @@ foreach ( $terms as $the_term ) {
 					$query      = $group['query'];
 					?>
 
-					<h1 class="col-12"><?php echo esc_html( $group_term->name ); ?></h1>
+          <h1 class="col-12"><?php echo esc_html( $group_term->name ); ?></h1>
 
-					<?php
-					while ( $query->have_posts() ) {
-						$query->the_post();
+          <div class="wpcd-contact-group">
 
-						$post_thumbnail = get_the_post_thumbnail( $query->post->ID, 'full', array( 'class' => 'img-fluid mx-auto d-block' ) );
-						?>
+            <?php
+            while ( $query->have_posts() ) {
+              $query->the_post();
 
-						<div class="directory-image media-container">
-							<a href="<?php echo esc_url( get_permalink( $query->post ) ); ?>">
-								<?php echo wp_kses_post( $post_thumbnail ); ?>
-							</a>
+              $post_thumbnail = get_the_post_thumbnail( $query->post->ID, 'full', array( 'class' => 'img-fluid mx-auto d-block' ) );
+              $description  = get_post_meta( $query->post->ID, 'wpcd_contact_details_description', true );
+              ?>
 
-							<div class="directory-details">
-								<div class="directory-name">
-									<a href="<?php echo esc_url( get_permalink( $query->post ) ); ?>">
-										<?php echo wp_kses_post( $query->post->name ); ?>
-									</a>
-								</div>
+              <a href="<?php echo esc_url( get_permalink( $query->post ) ); ?>" class="wpcd-contact">
+                <div class="directory-image media-container">
+                  <?php echo wp_kses_post( $post_thumbnail ); ?>
+                </div>
 
-								<div class="directory-title">
-									<?php echo wp_kses_post( $query->post->title ); ?>
-								</div>
+                <div class="wpcd-details">
+                  <div class="wpcd-name">
+                    <?php echo wp_kses_post( $query->post->post_title ); ?>
+                  </div>
 
-							</div>
-						</div>
-						<?php
-					}
+                  <div class="wpcd-description">
+                    <?php echo wp_kses_post( $description ); ?>
+                  </div>
+                </div>
+              </a><!-- .wpcd-contact -->
+              <?php
+            }
+            ?>
+
+          </div><!-- .wpcd-contact-group -->
+
+          <?php
 				}
 				?>
 			<?php
