@@ -51,57 +51,59 @@ foreach ( $terms as $the_term ) {
 }
 
 ?>
-<div class="facet-bar">
-	<ul class="nav filter-nav contact-group-nav flex-column">
 
-		<?php
-		// Loop through the groups.
-		foreach ( $groups as $group ) :
-			$group_term       = $group['term'];
-			$group_term_posts = $group['query']->posts;
-			$target           = 'collapse-' . $group_term->slug;
-			$is_target_active = ( $current_term instanceof \WP_Term ) && ( $current_term->term_id === $group_term->term_id ) ? true : false;
-			$collapse         = ( $is_target_active ) ? 'show' : 'collapse';
-			$expanded         = ( $is_target_active ) ? 'true' : 'false';
-			?>
+<div class="wpcd-wrap">
+  <div class="facet-bar">
+    <ul class="nav filter-nav contact-group-nav flex-column">
 
-			<li class="nav-item">
-				<a href="#<?php echo esc_attr( $target ); ?>" class="nav-link" data-toggle="collapse" aria-expanded="<?php echo esc_attr( $expanded ); ?>">
-          <span class="dashicons dashicons-arrow-right-alt2"></span>
-					<?php echo esc_html( $group_term->name ); ?>
-				</a>
+      <?php
+      // Loop through the groups.
+      foreach ( $groups as $group ) :
+        $group_term       = $group['term'];
+        $group_term_posts = $group['query']->posts;
+        $target           = 'collapse-' . $group_term->slug;
+        $is_target_active = ( $current_term instanceof \WP_Term ) && ( $current_term->term_id === $group_term->term_id ) ? true : false;
+        $collapse         = ( $is_target_active ) ? 'show' : 'collapse';
+        $expanded         = ( $is_target_active ) ? 'true' : 'false';
+        ?>
 
-				<ul class="nav sub-nav <?php echo sanitize_html_class( $collapse ); ?>" id="<?php echo esc_attr( $target ); ?>">
+        <li class="nav-item">
+          <a href="#<?php echo esc_attr( $target ); ?>" class="nav-link" data-toggle="collapse" aria-expanded="<?php echo esc_attr( $expanded ); ?>">
+            <span class="dashicons dashicons-arrow-right-alt2"></span>
+            <?php echo esc_html( $group_term->name ); ?>
+          </a>
 
-					<?php
-					foreach ( $group_term_posts as $group_post ) {
-						$active_class = ( get_permalink( $group_post ) === $current_page_url ) ? 'active' : '';
-						?>
+          <ul class="nav sub-nav <?php echo sanitize_html_class( $collapse ); ?>" id="<?php echo esc_attr( $target ); ?>">
 
-						<li class="nav-item w-100">
-							<a href="<?php echo esc_url( get_permalink( $group_post ) ); ?>" class="nav-link <?php echo sanitize_html_class( $active_class ); ?>">
-								<?php echo esc_html( get_the_title( $group_post->ID ) ); ?>
-							</a>
-						</li>
+            <?php
+            foreach ( $group_term_posts as $group_post ) {
+              $active_class = ( get_permalink( $group_post ) === $current_page_url ) ? 'active' : '';
+              ?>
 
-						<?php
-					}
-					?>
+              <li class="nav-item w-100">
+                <a href="<?php echo esc_url( get_permalink( $group_post ) ); ?>" class="nav-link <?php echo sanitize_html_class( $active_class ); ?>">
+                  <?php echo esc_html( get_the_title( $group_post->ID ) ); ?>
+                </a>
+              </li>
 
-				</ul>
-			</li>
+              <?php
+            }
+            ?>
 
-			<?php
-		endforeach;
-		?>
-	</ul>
+          </ul>
+        </li>
 
-	<?php
-	if ( $view_all ) {
-		echo '<a href="' . esc_url( $view_all_url ) . '" class="btn btn-primary my-3 w-100">View All</a>';
-	}
-	?>
- </div>
+        <?php
+      endforeach;
+      ?>
+    </ul>
+
+    <?php
+    if ( $view_all ) {
+      echo '<a href="' . esc_url( $view_all_url ) . '" class="btn btn-primary my-3 w-100">View All</a>';
+    }
+    ?>
+  </div>
 
 	<div class="results">
 		<?php if ( ! is_single() ) : ?>
@@ -192,6 +194,7 @@ foreach ( $terms as $the_term ) {
 					</main>
 		<?php endif; ?>
 	</div>
+</div><!-- .wpcd-wrap -->
 
 <?php
 get_footer();
