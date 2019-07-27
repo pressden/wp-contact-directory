@@ -106,63 +106,62 @@ foreach ( $terms as $the_term ) {
   </div><!-- .wpcd-sidebar -->
 
 	<main class="wpcd-content">
-		<?php if ( ! is_single() ) : ?>
-				<?php
-				// loop through the groups.
-				foreach ( $groups as $group ) {
-					$group_term = $group['term'];
-					$query      = $group['query'];
-					?>
 
-          <h1 class="wpcd-contact-group-title"><?php echo esc_html( $group_term->name ); ?></h1>
+    <?php
+    if ( ! is_single() ) :
+      // loop through the groups.
+      foreach ( $groups as $group ) {
+        $group_term = $group['term'];
+        $query      = $group['query'];
+        ?>
 
-          <div class="wpcd-contact-group">
+        <h1 class="wpcd-contact-group-title"><?php echo esc_html( $group_term->name ); ?></h1>
 
-            <?php
-            while ( $query->have_posts() ) {
-              $query->the_post();
-
-              $post_thumbnail = get_the_post_thumbnail( $query->post->ID, 'full' );
-              $description  = get_post_meta( $query->post->ID, 'wpcd_contact_details_description', true );
-              ?>
-
-              <a href="<?php echo esc_url( get_permalink( $query->post ) ); ?>" class="wpcd-contact">
-                <div class="wpcd-contact-image">
-                  <?php echo wp_kses_post( $post_thumbnail ); ?>
-                </div><!-- .wpcd-contact-image -->
-
-                <div class="wpcd-details">
-                  <div class="wpcd-name">
-                    <?php echo wp_kses_post( $query->post->post_title ); ?>
-                  </div><!-- .wpcd-name -->
-
-                  <div class="wpcd-description">
-                    <?php echo wp_kses_post( $description ); ?>
-                  </div><!-- .wpcd-description -->
-                </div><!-- .wpcd-details -->
-              </a><!-- .wpcd-contact -->
-              <?php
-            }
-            ?>
-
-          </div><!-- .wpcd-contact-group -->
+        <div class="wpcd-contact-group">
 
           <?php
-				}
-				?>
-			<?php
+          while ( $query->have_posts() ) {
+            $query->the_post();
+
+            $post_thumbnail = get_the_post_thumbnail( $query->post->ID, 'full' );
+            $description  = get_post_meta( $query->post->ID, 'wpcd_contact_details_description', true );
+            ?>
+
+            <a href="<?php echo esc_url( get_permalink( $query->post ) ); ?>" class="wpcd-contact">
+              <div class="wpcd-contact-image">
+                <?php echo wp_kses_post( $post_thumbnail ); ?>
+              </div><!-- .wpcd-contact-image -->
+
+              <div class="wpcd-details">
+                <div class="wpcd-name">
+                  <?php echo wp_kses_post( $query->post->post_title ); ?>
+                </div><!-- .wpcd-name -->
+
+                <div class="wpcd-description">
+                  <?php echo wp_kses_post( $description ); ?>
+                </div><!-- .wpcd-description -->
+              </div><!-- .wpcd-details -->
+            </a><!-- .wpcd-contact -->
+            <?php
+          }
+          ?>
+
+        </div><!-- .wpcd-contact-group -->
+
+        <?php
+      }
 		else :
-			$description  = get_post_meta( $query->post->ID, 'wpcd_contact_details_description', true );
-			$location     = get_post_meta( $query->post->ID, 'wpcd_contact_details_location', true );
-			$email        = get_post_meta( $query->post->ID, 'wpcd_contact_details_email', true );
-			$twitter      = get_post_meta( $query->post->ID, 'wpcd_contact_details_twitter', true );
-			$linkedin     = get_post_meta( $query->post->ID, 'wpcd_contact_details_linkedin', true );
+			$description  = get_post_meta( $post->ID, 'wpcd_contact_details_description', true );
+			$location     = get_post_meta( $post->ID, 'wpcd_contact_details_location', true );
+			$email        = get_post_meta( $post->ID, 'wpcd_contact_details_email', true );
+			$twitter      = get_post_meta( $post->ID, 'wpcd_contact_details_twitter', true );
+			$linkedin     = get_post_meta( $post->ID, 'wpcd_contact_details_linkedin', true );
 			?>
 
-      <article id="post-<?php echo absint( $query->post->ID ); ?>" class="wpcd-contact">
+      <article id="post-<?php echo absint( $post->ID ); ?>" class="wpcd-contact">
 
         <div class="wpcd-contact-image">
-          <?php echo get_the_post_thumbnail( $query->post->ID, 'full' ); ?>
+          <?php echo get_the_post_thumbnail( $post->ID, 'full' ); ?>
         </div>
 
         <header class="entry-header clearfix">
