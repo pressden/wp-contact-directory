@@ -168,7 +168,7 @@ foreach ( $terms as $the_term ) {
           <h1 class="entry-title" itemprop="headline"><?php the_title(); ?></h1>
 
           <?php if ( ! empty( $description ) ) : ?>
-            <p class="entry-meta"><?php echo esc_html( $description ); ?></p>
+            <h2 class="entry-meta"><?php echo esc_html( $description ); ?></h2>
           <?php endif; ?>
         </header>
 
@@ -177,7 +177,7 @@ foreach ( $terms as $the_term ) {
         </div>
 
         <footer class="entry-footer clearfix">
-
+          <a href="<?php echo $view_all_url; ?>" class="wpcd-view-all">Back to Team Directory</a>
         </footer>
 
       </article><!-- .wpcd-contact -->
