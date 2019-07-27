@@ -54,7 +54,7 @@ foreach ( $terms as $the_term ) {
 
 <div class="wpcd-wrap">
   <div class="wpcd-sidebar">
-    <ul class="nav filter-nav contact-group-nav flex-column">
+    <ul class="wpcd-nav wpcd-contact-groups-nav">
 
       <?php
       // Loop through the groups.
@@ -67,21 +67,21 @@ foreach ( $terms as $the_term ) {
         $expanded         = ( $is_target_active ) ? 'true' : 'false';
         ?>
 
-        <li class="nav-item">
-          <a href="#<?php echo esc_attr( $target ); ?>" class="nav-link" data-toggle="collapse" aria-expanded="<?php echo esc_attr( $expanded ); ?>">
+        <li>
+          <a href="#<?php echo esc_attr( $target ); ?>" data-toggle="collapse" aria-expanded="<?php echo esc_attr( $expanded ); ?>">
             <span class="dashicons dashicons-arrow-right-alt2"></span>
             <?php echo esc_html( $group_term->name ); ?>
           </a>
 
-          <ul class="nav sub-nav <?php echo sanitize_html_class( $collapse ); ?>" id="<?php echo esc_attr( $target ); ?>">
+          <ul class="wpcd-nav wpcd-contact-group-nav <?php echo sanitize_html_class( $collapse ); ?>" id="<?php echo esc_attr( $target ); ?>">
 
             <?php
             foreach ( $group_term_posts as $group_post ) {
               $active_class = ( get_permalink( $group_post ) === $current_page_url ) ? 'active' : '';
               ?>
 
-              <li class="nav-item w-100">
-                <a href="<?php echo esc_url( get_permalink( $group_post ) ); ?>" class="nav-link <?php echo sanitize_html_class( $active_class ); ?>">
+              <li>
+                <a href="<?php echo esc_url( get_permalink( $group_post ) ); ?>" class="<?php echo sanitize_html_class( $active_class ); ?>">
                   <?php echo esc_html( get_the_title( $group_post->ID ) ); ?>
                 </a>
               </li>
@@ -90,22 +90,22 @@ foreach ( $terms as $the_term ) {
             }
             ?>
 
-          </ul>
+          </ul><!-- .wpcd-nav .wpcd-contact-group-nav -->
         </li>
 
         <?php
       endforeach;
       ?>
-    </ul>
+    </ul><!-- .wpcd-nav .wpcd-contact-groups-nav -->
 
     <?php
     if ( $view_all ) {
-      echo '<a href="' . esc_url( $view_all_url ) . '" class="btn btn-primary my-3 w-100">View All</a>';
+      echo '<a href="' . esc_url( $view_all_url ) . '" class="wpcd-view-all">View All</a>';
     }
     ?>
-  </div>
+  </div><!-- .wpcd-sidebar -->
 
-	<div class="wpcd-content">
+	<main class="wpcd-content">
 		<?php if ( ! is_single() ) : ?>
 				<?php
 				// loop through the groups.
@@ -114,7 +114,7 @@ foreach ( $terms as $the_term ) {
 					$query      = $group['query'];
 					?>
 
-          <h1 class="col-12"><?php echo esc_html( $group_term->name ); ?></h1>
+          <h1 class="wpcd-contact-group-title"><?php echo esc_html( $group_term->name ); ?></h1>
 
           <div class="wpcd-contact-group">
 
@@ -122,24 +122,24 @@ foreach ( $terms as $the_term ) {
             while ( $query->have_posts() ) {
               $query->the_post();
 
-              $post_thumbnail = get_the_post_thumbnail( $query->post->ID, 'full', array( 'class' => 'img-fluid mx-auto d-block' ) );
+              $post_thumbnail = get_the_post_thumbnail( $query->post->ID, 'full' );
               $description  = get_post_meta( $query->post->ID, 'wpcd_contact_details_description', true );
               ?>
 
               <a href="<?php echo esc_url( get_permalink( $query->post ) ); ?>" class="wpcd-contact">
-                <div class="directory-image media-container">
+                <div class="wpcd-contact-image">
                   <?php echo wp_kses_post( $post_thumbnail ); ?>
-                </div>
+                </div><!-- .wpcd-contact-image -->
 
                 <div class="wpcd-details">
                   <div class="wpcd-name">
                     <?php echo wp_kses_post( $query->post->post_title ); ?>
-                  </div>
+                  </div><!-- .wpcd-name -->
 
                   <div class="wpcd-description">
                     <?php echo wp_kses_post( $description ); ?>
-                  </div>
-                </div>
+                  </div><!-- .wpcd-description -->
+                </div><!-- .wpcd-details -->
               </a><!-- .wpcd-contact -->
               <?php
             }
@@ -158,47 +158,34 @@ foreach ( $terms as $the_term ) {
 			$twitter      = get_post_meta( $query->post->ID, 'wpcd_contact_details_twitter', true );
 			$linkedin     = get_post_meta( $query->post->ID, 'wpcd_contact_details_linkedin', true );
 			?>
-			<main class="content col-lg-9 order-lg-last" id="genesis-content">
-				<div class="row">
 
-					<div class="media-container contact-image-container col-md-4">
-						<?php echo get_the_post_thumbnail( $query->post->ID, 'full', array( 'class' => 'img-fluid mx-auto d-block' ) ); ?>
+      <article id="post-<?php echo absint( $query->post->ID ); ?>" class="wpcd-contact">
 
-						<article class="post-<?php echo absint( $query->post->ID ); ?> contact type-contact status-publish format-standard has-post-thumbnail contact-group-consulting-services-team entry col-md-8" itemscope="" itemtype="https://schema.org/CreativeWork"><header class="entry-header clearfix">
-							<div class="entry-header-container container">
-								<h1 class="entry-title" itemprop="headline"><?php the_title(); ?></h1>
+        <div class="wpcd-contact-image">
+          <?php echo get_the_post_thumbnail( $query->post->ID, 'full' ); ?>
+        </div>
 
-								<?php if ( ! empty( $description ) ) : ?>
-									<p class="entry-meta"><?php echo esc_html( $description ); ?></p>
-								<?php endif; ?>
+        <header class="entry-header clearfix">
+          <h1 class="entry-title" itemprop="headline"><?php the_title(); ?></h1>
 
-							</div>
+          <?php if ( ! empty( $description ) ) : ?>
+            <p class="entry-meta"><?php echo esc_html( $description ); ?></p>
+          <?php endif; ?>
+        </header>
 
-							</header>
-								<div class="entry-content clearfix" itemprop="text">
-									<section id="apl-content-0-content" class="content-wrap layer-wrap">
-										<div class="container content-container">
-											<div class="content-layer layer row">
+        <div class="entry-content clearfix" itemprop="text">
+          <?php the_content(); ?>
+        </div>
 
-												<div class="content-col col">
-													<?php the_content(); ?>
-												</div>
+        <footer class="entry-footer clearfix">
 
-											</div>
-										</div>
-									</section>
-								</div>
-								<footer class="entry-footer clearfix">
-									<div class="entry-footer-container container"></div>
+        </footer>
 
-								</footer>
-						</article>
-						<h2 class="screen-reader-text">Reader Interactions</h2>
-					</div>
+      </article><!-- .wpcd-contact -->
 
-					</main>
 		<?php endif; ?>
-	</div>
+
+	</main><!-- .wpcd-content -->
 </div><!-- .wpcd-wrap -->
 
 <?php
