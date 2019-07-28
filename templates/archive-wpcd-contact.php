@@ -32,8 +32,6 @@ foreach ( $terms as $the_term ) {
 	$args  = [
 		'post_type'      => WPCD_CONTACT_POST_TYPE,
 		'posts_per_page' => -1,
-		'orderby'        => 'menu_order',
-		'order'          => 'ASC',
 		'tax_query'      => [
 			[
 				'taxonomy' => WPCD_CONTACT_GROUP_TAXONOMY,
