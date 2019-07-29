@@ -149,11 +149,18 @@ foreach ( $terms as $the_term ) {
         <?php
       }
 		else :
-			$description  = get_post_meta( $post->ID, 'wpcd_contact_details_description', true );
-			$location     = get_post_meta( $post->ID, 'wpcd_contact_details_location', true );
-			$email        = get_post_meta( $post->ID, 'wpcd_contact_details_email', true );
-			$twitter      = get_post_meta( $post->ID, 'wpcd_contact_details_twitter', true );
-			$linkedin     = get_post_meta( $post->ID, 'wpcd_contact_details_linkedin', true );
+			$description    = get_post_meta( $post->ID, 'wpcd_contact_details_description', true );
+      $location       = get_post_meta( $post->ID, 'wpcd_contact_details_location', true );
+
+      // build the social array
+      $social         = array(
+        'Email'       => get_post_meta( $post->ID, 'wpcd_contact_details_email', true ),
+        'Twitter'     => get_post_meta( $post->ID, 'wpcd_contact_details_twitter', true ),
+        'LinkedIn'    => get_post_meta( $post->ID, 'wpcd_contact_details_linkedin', true ),
+      );
+
+      // filter the social array to remove keys with empty values
+      $social = array_filter( $social );
 			?>
 
       <article id="post-<?php echo absint( $post->ID ); ?>" class="wpcd-contact">
@@ -172,6 +179,24 @@ foreach ( $terms as $the_term ) {
 
         <div class="entry-content clearfix" itemprop="text">
           <?php the_content(); ?>
+
+          <?php if( ! empty( $social ) ) : ?>
+            <ul class="social-links">
+
+            <?php foreach( $social as $social_network => $social_url ) : ?>
+
+              <li class="social-link">
+                <a href="<?php echo $social_url; ?>" title="<?php echo $social_network; ?>" target="_blank">
+                  <?php echo $social_network; ?>
+                </a>
+              </li>
+
+            <?php endforeach; ?>
+
+            </ul>
+
+        <?php endif; ?>
+
         </div>
 
         <footer class="entry-footer clearfix">
