@@ -107,13 +107,22 @@ foreach ( $terms as $the_term ) {
 
     <?php
     if ( ! is_single() ) :
+      ?>
+
+      <header class="page-header">
+        <h1 class="page-title">
+          <?php echo apply_filters( 'wpcd_page_title', __( 'Contact Directory', 'wpcd' ) ); ?>
+        </h1>
+      </header>
+
+      <?php
       // loop through the groups.
       foreach ( $groups as $group ) {
         $group_term = $group['term'];
         $query      = $group['query'];
         ?>
 
-        <h1 class="wpcd-contact-group-title"><?php echo esc_html( $group_term->name ); ?></h1>
+        <h2 class="wpcd-contact-group-title"><?php echo esc_html( $group_term->name ); ?></h2>
 
         <div class="wpcd-contact-group">
 
@@ -200,7 +209,9 @@ foreach ( $terms as $the_term ) {
         </div>
 
         <footer class="entry-footer clearfix">
-          <a href="<?php echo $view_all_url; ?>" class="wpcd-view-all">Back to Team Directory</a>
+          <a href="<?php echo $view_all_url; ?>" class="wpcd-view-all">
+            <?php echo apply_filters( 'wpcd_back_link_text', __( 'Back to the directory', 'wpcd' ) ); ?>
+          </a>
         </footer>
 
       </article><!-- .wpcd-contact -->
