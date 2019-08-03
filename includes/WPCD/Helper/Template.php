@@ -2,10 +2,10 @@
 /**
  * Helper functions for rendering template files.
  *
- * @package ElasticPress Rules Builder
+ * @package WPCD
  */
 
-namespace EP_Rules_Builder;
+namespace WPCD;
 
 /**
  * Helper function for including a template.
@@ -19,7 +19,7 @@ function include_template( $template, array $params = [] ) {
 	if ( '' !== locate_template( $template ) ) {
 		$template = get_stylesheet_directory() . '/' . $template;
 	} else {
-		$template = EAB_PLUGIN_DIR . '/templates/' . $template;
+		$template = WPCD_PLUGIN_DIR . '/templates/' . $template;
 	}
 
 	// Bail early if the template does not exist.

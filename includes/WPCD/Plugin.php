@@ -83,6 +83,9 @@ class Plugin {
 		add_action( 'init', [ $this, 'init' ] );
 		add_action( 'admin_init', [ $this, 'init_admin' ], 20 );
 		add_action( 'admin_menu', [ $this, 'init_admin_menu' ], 20 );
+		add_action( 'admin_enqueue_scripts', [ $this, 'init_admin_scripts' ] );
+		add_action( 'enqueue_block_editor_assets', [ $this, 'init_editor_assets' ] );
+		add_action( 'wp_enqueue_scripts', [ $this, 'init_frontend_assets' ] );
 	}
 
 	/**
@@ -108,10 +111,46 @@ class Plugin {
 
 			// Post Types.
 			'contact_post_type'     => new PostType\ContactPostType(),
+
+			// Assets.
+			'contact_post_type'     => new Assets(),
 		];
 
 		// Register objects.
 		$this->register_objects( $this->support );
+	}
+
+	/**
+	 * Enqueue scripts for the admin pages.
+	 *
+	 * @return void
+	 */
+	public function init_admin_scripts() {
+		wp_enqueue_script( 'wpcd-admin' );
+
+		$l10n = [];
+
+		wp_localize_script( 'wpcd-admin', 'WPCDAdmin', $l10n );
+	}
+
+	/**
+	 * Enqueue scripts & styles for the Gutenberg editor. This fires on the block
+	 * enqueue hence safe to assume that Gutenberg is active.
+	 *
+	 * @return void
+	 */
+	public function init_editor_assets() {
+		wp_enqueue_script( 'wpcd-editor' );
+	}
+
+	/**
+	 * Enqueue scripts & styles for the frontend.
+	 *
+	 * @return void
+	 */
+	public function init_frontend_assets() {
+		wp_enqueue_script( 'wpcd-frontend' );
+		wp_enqueue_style( 'wpcd-frontend' );
 	}
 
 	/**

@@ -1,2 +1,9 @@
-# Ignore vendor directories.
+# Ignore vendor directories and node modules.
 vendor/
+node_modules/
+
+# Ignore dist directory.
+dist/
+
+# Ignore editor files.
+.history/

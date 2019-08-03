@@ -1,0 +1,2 @@
+// Example: import './test.js';
+
