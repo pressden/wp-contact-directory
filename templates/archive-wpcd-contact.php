@@ -62,11 +62,12 @@ foreach ( $terms as $the_term ) {
         $target           = 'collapse-' . $group_term->slug;
         $is_target_active = ( $current_term instanceof \WP_Term ) && ( $current_term->term_id === $group_term->term_id ) ? true : false;
         $collapse         = ( $is_target_active ) ? 'show' : 'collapse';
-        $expanded         = ( $is_target_active ) ? 'true' : 'false';
+        $aria_expanded    = ( $is_target_active ) ? 'true' : 'false';
+        $expanded         = ( $is_target_active ) ? 'expanded' : '';
         ?>
 
         <li>
-          <a href="#<?php echo esc_attr( $target ); ?>" data-toggle="collapse" aria-expanded="<?php echo esc_attr( $expanded ); ?>">
+          <a href="#<?php echo esc_attr( $target ); ?>" class="wpcd-toggle <?php echo sanitize_html_class( $expanded ); ?>" data-toggle="collapse" aria-expanded="<?php echo esc_attr( $aria_expanded ); ?>">
             <span class="dashicons dashicons-arrow-right-alt2"></span>
             <?php echo esc_html( $group_term->name ); ?>
           </a>
