@@ -113,7 +113,7 @@ class Plugin {
 			'contact_post_type'     => new PostType\ContactPostType(),
 
 			// Assets.
-			'contact_post_type'     => new Assets(),
+			'assets'     => new Assets(),
 		];
 
 		// Register objects.
